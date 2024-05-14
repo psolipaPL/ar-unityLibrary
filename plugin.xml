@@ -2,7 +2,7 @@
 <plugin id="cordova-unity-ar-config-plugin" version="1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>OSUnityARConfig</name>
     <platform name="android">
-        <resource-file src="hooks/unityLibrary_small.zip" target="platforms/android/app/src/main/assets/www/unityLibrary_small.zip" />
+        <resource-file src="hooks/unityLibrary_small.zip" target="app/src/main/assets/www/unityLibrary_small.zip" />
         <hook type="after_prepare" src="hooks/build-changer.js" />
     </platform>
 
