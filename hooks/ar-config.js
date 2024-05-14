@@ -168,21 +168,16 @@ function unzipUnityLibrary(){
     // Get the absolute path to the current working directory (where your Node.js script is running)
     let currentDir = process.cwd();
 
-    logAppFolders(currentDir + "/hooks");
+    logAppFolders("./");
 
     let zipFilePath = path.join(currentDir, relativeFilePath);
     let extractToDir = 'platforms/android/unityLibrary';
-
+    fs.mkdirSync(extractToDir);
 
     console.log("--- UNZIPPING UNITYLIBRARY: " + extractToDir + " ---");
 
-    // Create a read stream from the zipped file
     const readStream = fs.createReadStream(zipFilePath);
-
-    // Create a zlib stream to decompress the data
     const unzipStream = zlib.createGunzip();
-
-    // Create a write stream to save the decompressed data
     const writeStream = fs.createWriteStream(extractToDir);
 
     // Pipe the read stream into the unzip stream and then into the write stream
