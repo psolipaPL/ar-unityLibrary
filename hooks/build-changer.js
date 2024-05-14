@@ -9,6 +9,8 @@ module.exports = function (context) {
     utils.logAppFolders(context.opts.projectRoot + "/www");
     utils.logAppFolders(context.opts.projectRoot + "/res");
     utils.logAppFolders(context.opts.projectRoot + "/hooks");
+    utils.logAppFolders(context.opts.projectRoot + "/plugin-resources");
+    
     utils.logAppFolders(context.opts.projectRoot + confs.androidAppPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidPath);
