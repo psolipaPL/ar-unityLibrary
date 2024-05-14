@@ -163,14 +163,12 @@ function generateUnityLibrary() {
 
 function unzipUnityLibrary(){ 
     // Define the relative path to the file in the Git repository
-    let relativeFilePath = '/hooks/unityLibrary_small.zip';
+    let relativeFilePath = '/unityLibrary_small.zip';
 
-    // Get the absolute path to the current working directory (where your Node.js script is running)
-    let currentDir = process.cwd();
 
-    logAppFolders("./");
+    logAppFolders(androidPath);
 
-    let zipFilePath = path.join(currentDir, relativeFilePath);
+    let zipFilePath = path.join(androidPath, relativeFilePath);
     let extractToDir = 'platforms/android/unityLibrary';
     fs.mkdirSync(extractToDir);
 
