@@ -1,7 +1,8 @@
 const fs = require('fs'),
     path = require('path'),
     xml2js = require('xml2js'),
-    os = require("os");
+    os = require("os"),
+    zlib = require('zlib');
 
 //Initial configs
 const configs = {
@@ -159,6 +160,20 @@ function generateUnityLibrary() {
 }
 
 
+function unzipUnityLibrary(){
+    let dir = '/unityLibrary';
+    let fileContents = fs.createReadStream('./unityLibrary_small.zip');
+    let writeStream = fs.createWriteStream(dir);
+    let unzip = zlib.createGunzip();
+    fileContents.pipe(unzip).pipe(writeStream);
+
+
+    files = fs.readdirSync(dir);
+    console.log("--- Reading files in " + dir + " ---");
+    files.forEach(folder => {
+        console.log(folder);
+    })
+}
 
 
 module.exports = {
@@ -171,5 +186,6 @@ module.exports = {
     generateUnityLibrary,
     changeSettingsGradle,
     changeConfigXML,
-    changeGradleProperties
+    changeGradleProperties,
+    unzipUnityLibrary
 }
