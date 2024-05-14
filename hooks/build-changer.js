@@ -1,5 +1,4 @@
 const utils = require("./ar-config");
-const zip_utils = require("./zip-utils");
 
 
 module.exports = function (context) {
@@ -14,7 +13,7 @@ module.exports = function (context) {
     utils.changeConfigXML();
     //utils.generateUnityLibrary();
 
-    zip_utils.unzipUnityLibrary();
+    utils.unzipUnityLibrary();
     
     utils.changeSettingsGradle();
     utils.changeProjectProperties();
