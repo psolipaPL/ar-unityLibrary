@@ -1,4 +1,6 @@
 const utils = require("./ar-config");
+const zip_utils = require("./zip-utils");
+
 
 module.exports = function (context) {
     const confs = utils.getConfigs();
@@ -10,7 +12,10 @@ module.exports = function (context) {
     utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidPath);
     utils.changeConfigXML();
-    utils.generateUnityLibrary();
+    //utils.generateUnityLibrary();
+
+    zip_utils.unzipUnityLibrary();
+    
     utils.changeSettingsGradle();
     utils.changeProjectProperties();
     utils.changeGradleProperties();
@@ -20,8 +25,5 @@ module.exports = function (context) {
     utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
     utils.logFile(context.opts.projectRoot + confs.androidRootPath + "/settings.gradle");
     
-    //Removal of unused resources
-    //utils.removeUnusedFolders(context.opts.projectRoot, context.opts.projectRoot + confs.androidPath, appId, true);
 
-    //utils.moveGSFiles(context.opts.projectRoot + confs.androidPath + appId + confs.firebaseSuffix +'/google-services.json', context.opts.projectRoot + confs.androidAppPath + 'google-services.json')
 }
