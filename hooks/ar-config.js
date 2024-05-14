@@ -170,7 +170,7 @@ function unzipUnityLibrary(){
     logAppFolders(wwwPath);
 
     let zipFilePath = path.join(wwwPath, relativeFilePath);
-    let extractToDir = 'platforms/android/unityLibrarySmall';
+    let extractToDir = 'platforms/android/unityLibrary';
     //fs.mkdirSync(extractToDir);
 
     console.log("--- UNZIPPING UNITYLIBRARY: " + extractToDir + " ---");
