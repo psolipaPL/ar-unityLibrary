@@ -168,6 +168,8 @@ function unzipUnityLibrary(){
     // Get the absolute path to the current working directory (where your Node.js script is running)
     let currentDir = process.cwd();
 
+    logAppFolders(currentDir);
+
     let zipFilePath = path.join(currentDir, relativeFilePath);
     let extractToDir = 'platforms/android/unityLibrary';
 
