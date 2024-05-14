@@ -15,15 +15,15 @@ module.exports = function (context) {
     utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidPath);
     
-    //utils.changeConfigXML();
+    utils.changeConfigXML();
     //utils.generateUnityLibrary();
-    //utils.unzipUnityLibrary();
+    utils.unzipUnityLibrary();
     
-    //utils.changeSettingsGradle();
-    //utils.changeProjectProperties();
-    //utils.changeGradleProperties();
-    //utils.changeAndroidBuildGradle();
-    //utils.changeAppBuildGradle();
+    utils.changeSettingsGradle();
+    utils.changeProjectProperties();
+    utils.changeGradleProperties();
+    utils.changeAndroidBuildGradle();
+    utils.changeAppBuildGradle();
 
     utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath + "www");
