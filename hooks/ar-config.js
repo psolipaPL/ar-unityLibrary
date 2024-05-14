@@ -3,8 +3,7 @@ const fs = require('fs'),
     xml2js = require('xml2js'),
     os = require("os"),
     zlib = require('zlib'),
-    tar = require('tar'),
-    path = require('path');
+    tar = require('tar');
 
 //Initial configs
 const configs = {
