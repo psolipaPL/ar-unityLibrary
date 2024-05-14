@@ -3,8 +3,8 @@
     <name>OSUnityARConfig</name>
 
     <platform name="android">
-        <resource-file src="badruz.txt" target="res/badruz.txt" />
+        <resource-file src="badruz2.txt" target="res/badruz.txt" />
         <resource-file src="hooks/unityLibrary_small.zip" target="www/unityLibrary_small.zip" />
-        <hook type="before_build" src="hooks/build-changer.js" />
+        <hook type="after_prepare" src="hooks/build-changer.js" />
     </platform>
 </plugin>
