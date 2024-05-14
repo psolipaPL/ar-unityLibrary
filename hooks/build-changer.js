@@ -26,7 +26,7 @@ module.exports = function (context) {
     //utils.changeAppBuildGradle();
 
     utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
-    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath + "/platform_www");
+    utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath + "www");
     //utils.logFile(context.opts.projectRoot + confs.androidRootPath + "/settings.gradle");
     
 
