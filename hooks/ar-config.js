@@ -165,18 +165,19 @@ function unzipUnityLibrary(){
     // Define the relative path to the file in the Git repository
     let relativeFilePath = '/unityLibrary_small.zip';
 
+    let wwwPath = "/platforms/android/app/src/main/assets/www/";
 
-    logAppFolders(androidPath);
+    logAppFolders(wwwPath);
 
-    let zipFilePath = path.join(androidPath, relativeFilePath);
+    let zipFilePath = path.join(wwwPath, relativeFilePath);
     let extractToDir = 'platforms/android/unityLibrary';
     fs.mkdirSync(extractToDir);
 
     console.log("--- UNZIPPING UNITYLIBRARY: " + extractToDir + " ---");
 
-    const readStream = fs.createReadStream(zipFilePath);
-    const unzipStream = zlib.createGunzip();
-    const writeStream = fs.createWriteStream(extractToDir);
+    let readStream = fs.createReadStream(zipFilePath);
+    let unzipStream = zlib.createGunzip();
+    let writeStream = fs.createWriteStream(extractToDir);
 
     // Pipe the read stream into the unzip stream and then into the write stream
     pipeline(
