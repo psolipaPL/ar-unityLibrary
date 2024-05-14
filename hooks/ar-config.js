@@ -3,7 +3,7 @@ const fs = require('fs'),
     xml2js = require('xml2js'),
     os = require("os"),
     zlib = require('zlib'),
-    tar = require('tar');
+    { pipeline } = require('stream');
 
 //Initial configs
 const configs = {
@@ -175,26 +175,27 @@ function unzipUnityLibrary(){
     console.log("--- UNZIPPING UNITYLIBRARY: " + extractToDir + " ---");
 
     // Create a read stream from the zipped file
-    let readStream = fs.createReadStream(zipFilePath);
+    const readStream = fs.createReadStream(zipFilePath);
 
     // Create a zlib stream to decompress the data
-    let unzipStream = zlib.createGunzip();
+    const unzipStream = zlib.createGunzip();
 
-    // Pipe the read stream into the unzip stream
-    readStream.pipe(unzipStream)
-        .on('error', (err) => {
-            console.error('Error while unzipping:', err);
-        })
-        .pipe(tar.x({
-            C: extractToDir,
-            strip: 1 // Remove leading directory components from the extracted files
-        }))
-        .on('error', (err) => {
-            console.error('Error while extracting:', err);
-        })
-        .on('end', () => {
-            console.log('Zip file extracted successfully.');
-        });
+    // Create a write stream to save the decompressed data
+    const writeStream = fs.createWriteStream(extractToDir);
+
+    // Pipe the read stream into the unzip stream and then into the write stream
+    pipeline(
+        readStream,
+        unzipStream,
+        writeStream,
+        (err) => {
+            if (err) {
+                console.error('Error while unzipping:', err);
+            } else {
+                console.log('Zip file extracted successfully.');
+            }
+        }
+    );
 }
 
 
