@@ -5,6 +5,13 @@ const fileContents = fs.createReadStream('/unityLibrary_small.zip');
 const writeStream = fs.createWriteStream('/unityLibrary');
 const unzip = zlib.createGunzip();
 
-fileContents.pipe(unzip).pipe(writeStream);
+
+function unzipUnityLibrary(){
+  fileContents.pipe(unzip).pipe(writeStream);
+}
 
 
+
+module.exports = {
+    unzipUnityLibrary
+}
