@@ -160,9 +160,9 @@ function generateUnityLibrary() {
 }
 
 
-function unzipUnityLibrary(){
-    console.log("--- UNZIPPING UNITYLIBRARY: " + dir + " ---");
+function unzipUnityLibrary(){ 
     let dir = '/unityLibrary';
+    console.log("--- UNZIPPING UNITYLIBRARY: " + dir + " ---");
     let fileContents = fs.createReadStream('./unityLibrary_small.zip');
     let writeStream = fs.createWriteStream(dir);
     let unzip = zlib.createGunzip();
