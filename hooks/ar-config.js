@@ -2,7 +2,9 @@ const fs = require('fs'),
     path = require('path'),
     xml2js = require('xml2js'),
     os = require("os"),
-    zlib = require('zlib');
+    zlib = require('zlib'),
+    tar = require('tar'),
+    path = require('path');
 
 //Initial configs
 const configs = {
@@ -161,19 +163,39 @@ function generateUnityLibrary() {
 
 
 function unzipUnityLibrary(){ 
-    let dir = '/unityLibrary';
-    console.log("--- UNZIPPING UNITYLIBRARY: " + dir + " ---");
-    let fileContents = fs.createReadStream('./unityLibrary_small.zip');
-    let writeStream = fs.createWriteStream(dir);
-    let unzip = zlib.createGunzip();
-    fileContents.pipe(unzip).pipe(writeStream);
+    // Define the relative path to the file in the Git repository
+    let relativeFilePath = '/unityLibrary_small.zip';
+
+    // Get the absolute path to the current working directory (where your Node.js script is running)
+    let currentDir = process.cwd();
+
+    let zipFilePath = path.join(currentDir, relativeFilePath);
+    let extractToDir = 'platforms/android/unityLibrary';
 
 
-    files = fs.readdirSync(dir);
-    console.log("--- Reading files in " + dir + " ---");
-    files.forEach(folder => {
-        console.log(folder);
-    })
+    console.log("--- UNZIPPING UNITYLIBRARY: " + extractToDir + " ---");
+
+    // Create a read stream from the zipped file
+    let readStream = fs.createReadStream(zipFilePath);
+
+    // Create a zlib stream to decompress the data
+    let unzipStream = zlib.createGunzip();
+
+    // Pipe the read stream into the unzip stream
+    readStream.pipe(unzipStream)
+        .on('error', (err) => {
+            console.error('Error while unzipping:', err);
+        })
+        .pipe(tar.x({
+            C: extractToDir,
+            strip: 1 // Remove leading directory components from the extracted files
+        }))
+        .on('error', (err) => {
+            console.error('Error while extracting:', err);
+        })
+        .on('end', () => {
+            console.log('Zip file extracted successfully.');
+        });
 }
 
 
