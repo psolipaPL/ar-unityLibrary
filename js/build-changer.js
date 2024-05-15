@@ -16,18 +16,19 @@ module.exports = function (context) {
     utils.logAppFolders(context.opts.projectRoot + confs.androidPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath + "www");
-    utils.changeConfigXML();
+    
     //utils.generateUnityLibrary();
     //utils.unzipUnityLibrary();
     utils.getAndUnzipUnityLibrary();
-    
+    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
+    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath + "/unityLibrary");
+    utils.changeConfigXML();
     utils.changeSettingsGradle();
     utils.changeProjectProperties();
     utils.changeGradleProperties();
     utils.changeAndroidBuildGradle();
     utils.changeAppBuildGradle();
-    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
-    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath + "/unityLibrary");
+
 
 
     //utils.logFile(context.opts.projectRoot + confs.androidRootPath + "/settings.gradle");
