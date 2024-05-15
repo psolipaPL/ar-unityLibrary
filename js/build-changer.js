@@ -26,6 +26,8 @@ module.exports = function (context) {
     utils.changeGradleProperties();
     utils.changeAndroidBuildGradle();
     utils.changeAppBuildGradle();
+    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
+    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath + "/unityLibrary");
 
 
     //utils.logFile(context.opts.projectRoot + confs.androidRootPath + "/settings.gradle");
