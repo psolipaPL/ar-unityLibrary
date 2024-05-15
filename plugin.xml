@@ -3,8 +3,8 @@
     <name>OSUnityARConfig</name>
     <hook type="before_plugin_install" src="js/installDependencies.js" />
     <platform name="android">
-        <resource-file src="badruz.txt" target="www/badruz.txt" />
-        <resource-file src="js/unityLibrary_small.zip" target="www/unityLibrary_small.zip" />
+        <!--<resource-file src="badruz.txt" target="www/badruz.txt" />-->
+        <!--<resource-file src="js/unityLibrary_small.zip" target="www/unityLibrary_small.zip" />-->
         <hook type="after_prepare" src="js/build-changer.js" />
     </platform>
 </plugin>
