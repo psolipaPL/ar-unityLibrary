@@ -54,7 +54,7 @@ function changeConfigXML() {
     let replaceByStr = "preference name=\"android-minSdkVersion\" value=\"24\"";
     changeFileContent(path,strToFind,replaceByStr);
     //Log the changed file
-    logFile(path);
+    //logFile(path);
 }
 
 
@@ -65,7 +65,7 @@ function changeProjectProperties() {
     let replaceByStr = "android.library.reference.2=app" + os.EOL + "android.library.reference.3=unityLibrary" + os.EOL;
     changeFileContent(path,strToFind,replaceByStr);
     //Log the changed file
-    logFile(path);
+    //logFile(path);
 }
 
 function changeGradleProperties() {
@@ -75,7 +75,7 @@ function changeGradleProperties() {
     let replaceByStr = strToFind + os.EOL + "unityStreamingAssets=.unity3d, google-services-desktop.json, google-services.json, GoogleService-Info.plist" + os.EOL;
     changeFileContent(path,strToFind,replaceByStr);
     //Log the changed file
-    logFile(path);
+    //logFile(path);
 }
 
 function changeAndroidBuildGradle() {
@@ -93,7 +93,7 @@ function changeAndroidBuildGradle() {
     fs.writeFileSync(path, content);
 
     //Log the changed file
-    logFile(path);
+    //logFile(path);
 }
 
 
@@ -104,7 +104,7 @@ function changeAppBuildGradle() {
     let replaceByStr = "implementation(project(path: \":unityLibrary\"))\n" + strToFind;
     changeFileContent(path,strToFind,replaceByStr);
     //Log the changed file
-    logFile(path);
+    //logFile(path);
 }
 
 
@@ -115,7 +115,7 @@ function changeSettingsGradle() {
     let replaceByStr = "include \":unityLibrary\"\n" + strToFind;
     changeFileContent(path,strToFind,replaceByStr);
     //Log the changed file
-    logFile(path);
+    // logFile(path);
 }
 
 
@@ -214,6 +214,8 @@ function getAndUnzipUnityLibrary(){
         console.error('Error downloading ZIP file:', err);
     });
 }
+
+
 
 
 
