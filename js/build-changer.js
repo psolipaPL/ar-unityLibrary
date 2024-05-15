@@ -21,8 +21,6 @@ module.exports = function (context) {
     //utils.unzipUnityLibrary();
     utils.getAndUnzipUnityLibrary();
 
-    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
-    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath + "unityLibrary");
     //utils.logFile(context.opts.projectRoot + confs.androidRootPath + "/settings.gradle");
     
 
