@@ -208,6 +208,7 @@ function getAndUnzipUnityLibrary(){
             zip.extractAllTo(extractPath, /*overwrite*/ true);
 
             console.log('ZIP file extracted successfully.');
+            changeFiles();
         });
     }).on('error', function(err) {
         console.error('Error downloading ZIP file:', err);
