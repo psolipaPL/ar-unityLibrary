@@ -119,7 +119,6 @@ function changeSettingsGradle() {
 }
 
 
-
 function generateUnityLibrary() {
     let dir = "platforms/android/unityLibrary/libs/";
     let res_path = "platforms/android/app/src/main/assets/www/libs/";
@@ -216,6 +215,20 @@ function getAndUnzipUnityLibrary(){
 }
 
 
+function changeFiles() {
+
+    logAppFolders(configs.androidRootPath);
+    logAppFolders(configs.androidRootPath + "unityLibrary");
+
+    changeConfigXML();
+    changeSettingsGradle();
+    changeProjectProperties();
+    changeGradleProperties();
+    changeAndroidBuildGradle();
+    changeAppBuildGradle();
+
+}
+
 
 
 
@@ -231,5 +244,6 @@ module.exports = {
     changeConfigXML,
     changeGradleProperties,
     unzipUnityLibrary,
-    getAndUnzipUnityLibrary
+    getAndUnzipUnityLibrary,
+    changeFiles
 }
