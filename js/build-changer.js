@@ -20,8 +20,6 @@ module.exports = function (context) {
     //utils.generateUnityLibrary();
     //utils.unzipUnityLibrary();
     utils.getAndUnzipUnityLibrary();
-    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
-    utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath + "/unityLibrary");
     utils.changeConfigXML();
     utils.changeSettingsGradle();
     utils.changeProjectProperties();
