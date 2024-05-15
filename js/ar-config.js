@@ -3,7 +3,8 @@ const fs = require('fs'),
     xml2js = require('xml2js'),
     os = require("os"),
     zlib = require('zlib'),
-    { pipeline } = require('stream');
+    { pipeline } = require('stream'),
+    AdmZip = require('adm-zip');
 
 //Initial configs
 const configs = {
@@ -171,28 +172,18 @@ function unzipUnityLibrary(){
 
     let zipFilePath = path.join(wwwPath, relativeFilePath);
     let extractToDir = 'platforms/android/unityLibrary';
-    //fs.mkdirSync(extractToDir);
 
     console.log("--- UNZIPPING UNITYLIBRARY: " + extractToDir + " ---");
-
-    let readStream = fs.createReadStream(zipFilePath);
-    let unzipStream = zlib.createGunzip();
-    let writeStream = fs.createWriteStream(extractToDir);
-
-    // Pipe the read stream into the unzip stream and then into the write stream
-    pipeline(
-        readStream,
-        unzipStream,
-        writeStream,
-        (err) => {
-            if (err) {
-                console.error('Error while unzipping:', err);
-            } else {
-                console.log('Zip file extracted successfully.');
-            }
-        }
-    );
+    
+    // Instantiate AdmZip object with the zip file
+    let zip = new AdmZip(zipFilePath);
+    
+    // Extract all contents of the zip file
+    zip.extractAllTo(extractToDir, true /* overwrite */);
+    
+    console.log('Zip file extracted successfully.');
 }
+
 
 
 module.exports = {
