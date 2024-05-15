@@ -20,13 +20,6 @@ module.exports = function (context) {
     //utils.generateUnityLibrary();
     //utils.unzipUnityLibrary();
     utils.getAndUnzipUnityLibrary();
-    utils.changeConfigXML();
-    utils.changeSettingsGradle();
-    utils.changeProjectProperties();
-    utils.changeGradleProperties();
-    utils.changeAndroidBuildGradle();
-    utils.changeAppBuildGradle();
-
 
 
     //utils.logFile(context.opts.projectRoot + confs.androidRootPath + "/settings.gradle");
