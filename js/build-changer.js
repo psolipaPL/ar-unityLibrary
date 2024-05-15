@@ -15,7 +15,7 @@ module.exports = function (context) {
     utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidPath);
     utils.logAppFolders(context.opts.projectRoot + confs.androidRootPath);
-    utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath + "www");
+    //utils.logAppFolders(context.opts.projectRoot + confs.androidMainPath + "www");
     
     //utils.generateUnityLibrary();
     //utils.unzipUnityLibrary();
