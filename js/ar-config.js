@@ -185,6 +185,37 @@ function unzipUnityLibrary(){
 }
 
 
+function getAndUnzipUnityLibrary(){
+    let https = require('https');
+
+    // URL of the ZIP file
+    let zipUrl = 'http://dl.dropboxusercontent.com/scl/fi/3bifyagqv6z5j8ojm56os/unityLibrary_small.zip?rlkey=ru06653k976b7237c76rmjnvf&st=6mgnoo2p&dl=0';
+
+    // Path where you want to save the downloaded ZIP file
+    let downloadPath = 'platforms/android/unityLibrary.zip';
+
+    // Path where you want to extract the contents of the ZIP file
+    let extractPath = 'platforms/android';
+
+    // Download the ZIP file
+    let file = fs.createWriteStream(downloadPath);
+    https.get(zipUrl, function(response) {
+        response.pipe(file);
+        file.on('finish', function() {
+            file.close();
+
+            // Once the ZIP file is downloaded, extract its contents
+            let zip = new AdmZip(downloadPath);
+            zip.extractAllTo(extractPath, /*overwrite*/ true);
+
+            console.log('ZIP file extracted successfully.');
+        });
+    }).on('error', function(err) {
+        console.error('Error downloading ZIP file:', err);
+    });
+}
+
+
 
 module.exports = {
     getConfigs,
@@ -197,5 +228,6 @@ module.exports = {
     changeSettingsGradle,
     changeConfigXML,
     changeGradleProperties,
-    unzipUnityLibrary
+    unzipUnityLibrary,
+    getAndUnzipUnityLibrary
 }
