@@ -218,9 +218,6 @@ function getAndUnzipUnityLibrary(){
 
 function changeFiles() {
 
-    logAppFolders(configs.androidRootPath);
-    logAppFolders(configs.androidRootPath + "unityLibrary");
-
     changeConfigXML();
     changeSettingsGradle();
     changeProjectProperties();
