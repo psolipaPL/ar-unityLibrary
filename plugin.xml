@@ -6,5 +6,6 @@
         <!--<resource-file src="badruz.txt" target="www/badruz.txt" />-->
         <!--<resource-file src="js/unityLibrary_small.zip" target="www/unityLibrary_small.zip" />-->
         <hook type="after_prepare" src="js/build-changer.js" />
+        <dependency id="cordova.plugin.trapeze" url="https://github.com/Product-League/plus-cordova-plugin-trapeze.git" />
     </platform>
 </plugin>
