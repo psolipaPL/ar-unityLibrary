@@ -117,7 +117,7 @@ function changeSettingsGradle() {
     let path = "platforms/android/settings.gradle";
     logFile(path);
     let strToFind = "include \":app\"";
-    let replaceByStr = "include \":unityLibrary\"\n project(':unityLibrary').projectDir=new File('..\\platforms\\android\\unityLibrary')\n" + strToFind;
+    let replaceByStr = "include \":unityLibrary\"\n project(':unityLibrary').projectDir= file('platforms/android/unityLibrary')\n" + strToFind;
     changeFileContent(path,strToFind,replaceByStr);
     //Log the changed file
     // logFile(path);
