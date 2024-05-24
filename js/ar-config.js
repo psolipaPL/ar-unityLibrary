@@ -102,7 +102,12 @@ function changeAppBuildGradle() {
     logFile(path);
     let strToFind = "// SUB-PROJECT DEPENDENCIES END";
     let replaceByStr = "implementation(project(path: \":unityLibrary\"))\n" + strToFind;
+    
+    let strToFind2 = "namespace cordovaConfig.PACKAGE_NAMESPACE";
+    let replaceByStr2 = "namespace 'com.outsystemscloud.solipa.Test1'";
+    
     changeFileContent(path,strToFind,replaceByStr);
+    changeFileContent(path,strToFind2,replaceByStr2);
     //Log the changed file
     //logFile(path);
 }
