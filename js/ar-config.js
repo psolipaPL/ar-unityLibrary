@@ -99,7 +99,7 @@ function changeAndroidBuildGradle() {
 
 function changeAppBuildGradle() {
     let path = "platforms/android/app/build.gradle";
-    logFile(path);
+    //logFile(path);
     let strToFind = "// SUB-PROJECT DEPENDENCIES END";
     let replaceByStr = "implementation(project(path: \":unityLibrary\"))\n" + strToFind;
     
@@ -109,7 +109,7 @@ function changeAppBuildGradle() {
     changeFileContent(path,strToFind,replaceByStr);
     changeFileContent(path,strToFind2,replaceByStr2);
     //Log the changed file
-    //logFile(path);
+    logFile(path);
 }
 
 
